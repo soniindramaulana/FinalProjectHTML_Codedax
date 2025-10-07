@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Neptune Diner Menu</title>
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #0b1a2e; 
+            color: #e0f2fe; 
+            padding: 1rem; 
+        }
+
+        .container {
+            max-width: 1280px; 
+            margin: 0 auto; 
+        }
+        
+        @media (min-width: 768px) {
+            body {
+                padding: 2rem; 
+            }
+        }
+
+        header {
+            text-align: center;
+            padding-top: 2rem; 
+            padding-bottom: 2rem;
+            margin-bottom: 2rem; 
+            background-color: #1e3a8a; 
+            border-bottom: 5px solid #fcd34d; 
+            border-radius: 0.75rem; 
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); 
+        }
+        
+        header h1 {
+            font-size: 3rem; 
+            font-weight: 800; 
+            color: white;
+            margin-bottom: 1rem; 
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        @media (min-width: 768px) {
+            header h1 {
+                font-size: 3.75rem; 
+            }
+        }
+
+        #header-img {
+            width: 91.66%; 
+            max-width: 80rem; 
+            margin: 1rem auto; 
+            border-radius: 0.5rem; 
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); 
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem; 
+            font-size: 1.125rem; 
+            font-weight: 600; 
+            margin-top: 1.5rem; 
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 0.75rem; 
+            border-radius: 0.375rem;
+            transition: color 0.15s, background-color 0.15s;
+        }
+        nav a:hover {
+            color: #fcd34d; 
+        }
+
+        .section-bg {
+            background-color: #112a4c;
+            border-radius: 1rem;
+            padding: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); 
+        }
+
+        section h2 {
+            font-size: 2.25rem;
+            font-weight: 700; 
+            text-align: center;
+            margin-bottom: 2.5rem; 
+            color: #fcd34d; 
+            border-bottom: 2px solid #fcd34d;
+            padding-bottom: 0.75rem; 
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem; 
+        }
+        @media (min-width: 768px) {
+            .menu-grid {
+                grid-template-columns: repeat(3, 1fr); 
+            }
+        }
+
+        
+        .menu-item-card {
+            background-color: #1c3d6f;
+            padding: 1.5rem; 
+            border-radius: 0.75rem; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05); 
+            transition: box-shadow 0.3s;
+        }
+        .menu-item-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(252, 211, 77, 0.2), 0 4px 6px -2px rgba(252, 211, 77, 0.1);
+        }
+        .menu-item-card img {
+            width: 100%;
+            height: 12rem; 
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem; 
+        }
+        .menu-item-card h3 {
+            font-size: 1.5rem; 
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem; 
+        }
+        .menu-item-card p {
+            color: #d1d5db; 
+            font-size: 1rem; 
+        }
+        .menu-item-card i {
+            color: #fcd34d; 
+            font-weight: 600;
+        }
+
+        .order-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem; 
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr; 
+            gap: 1.5rem; 
+        }
+        @media (min-width: 768px) {
+            .form-grid {
+                grid-template-columns: repeat(3, 1fr); 
+            }
+        }
+        .form-field {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-field label {
+            margin-bottom: 0.5rem; 
+            font-size: 1.125rem; 
+            font-weight: 500; 
+        }
+        
+        .form-input {
+            padding: 0.75rem; 
+            border-radius: 0.5rem; 
+            background-color: #4b5563; 
+            color: white;
+            border: 1px solid #4b5563;
+        }
+        .form-input:focus {
+            outline: 2px solid #fcd34d; 
+            border-color: #fcd34d;
+        }
+        
+        textarea {
+            resize: none; 
+            height: 6rem; 
+        }
+
+        .form-control-group {
+            padding-top: 1.5rem; 
+            border-top: 1px solid #4b5563; 
+        }
+        .form-control-group h3 {
+            font-size: 1.5rem; 
+            font-weight: 600;
+            margin-bottom: 1rem; 
+            color: white;
+        }
+        .form-control-group p {
+            font-weight: 500;
+            margin-bottom: 0.75rem; 
+        }
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem; 
+        }
+        .input-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem; 
+            font-weight: normal;
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+        input[type="checkbox"], input[type="radio"] {
+            appearance: none;
+            width: 1.25rem;
+            height: 1.25rem;
+            background-color: #4b5563; 
+            border: 1px solid #4b5563;
+            border-radius: 0.25rem;
+            transition: all 0.15s ease-in-out;
+            cursor: pointer;
+        }
+        input[type="radio"] {
+            border-radius: 50%;
+        }
+        input[type="checkbox"]:checked, input[type="radio"]:checked {
+            background-color: #fcd34d; 
+            border-color: #fcd34d;
+        }
+
+        .submit-div {
+            padding-top: 1.5rem; 
+            text-align: center;
+        }
+        .submit-btn {
+            background-color: #fcd34d;
+            color: #1e3a8a;
+            font-weight: 800;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.15);
+        }
+        .submit-btn:hover {
+            background-color: #fbbf24;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding-top: 1.5rem; 
+            padding-bottom: 1.5rem;
+            margin-top: 2rem; 
+            border-top: 4px solid #374151; 
+        }
+        footer p {
+            font-size: 1rem; 
+            color: #9ca3af; 
+        }
+        footer a {
+            color: #fcd34d; 
+            text-decoration: none;
+            font-weight: 500;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>The Neptune Diner</h1>
+            <img 
+                id="header-img" 
+                src="https://png.pngtree.com/thumb_back/fh260/background/20230721/pngtree-realistic-night-and-sunrise-views-of-neptune-planet-in-the-solar-image_3718360.jpg" 
+                alt="A neon sign advertising delicious food in space." 
+            >
+            <nav>
+                <ul>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#order-form">Place Your Order</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+
+            <section id="menu" class="section-bg">
+                <h2>Menu</h2>
+
+                <div class="menu-grid">
+                    <article class="menu-item-card">
+                        <img 
+                            src="https://hips.hearstapps.com/hmg-prod/images/big-mac-index-66574ee4103a5.jpg?crop=0.891xw:1.00xh;0.0554xw,0" 
+                            alt="A massive, layered burger with cheese." 
+                        >
+                        <h3>Galactic Burger</h3>
+                        <p>
+                            A certified space-beef patty topped with exotic, shimmering space cheese and our signature nebula sauce. An explosion of flavor! 
+                            <i>($12.99)</i>
+                        </p>
+                    </article>
+
+                    <article class="menu-item-card">
+                        <img 
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCRUdGVqqvXWpPBI2Cv79xsEKSzsJuqUoajA&s" 
+                            alt="Golden sweet potato fries seasoned with spices." 
+                        >
+                        <h3>Cosmic Fries</h3>
+                        <p>
+                            Crispy sweet potato fries dusted with a secret blend of spicy stardust seasoning. Perfect for dipping. 
+                            <i>($5.50)</i>
+                        </p>
+                    </article>
+
+                    <article class="menu-item-card">
+                        <img 
+                            src="https://www.razzledazzlelife.com/wp-content/uploads/2019/09/Candy-Loaded-Milkshakes7-1024x746.jpg" 
+                            alt="A thick, chocolate milkshake with chunks of meteor-shaped candy." 
+                        >
+                        <h3>Meteor Shake</h3>
+                        <p>
+                            Rich, dark chocolate ice cream blended until smooth, featuring chunks of chewy, cosmic comet candy. 
+                            <i>($7.00)</i>
+                        </p>
+                    </article>
+
+                </div>
+            </section>
+
+            <section id="order-form" class="section-bg">
+                <h2>Place Your Order</h2>
+
+                <form class="order-form">
+                    
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="burger-qty">Galactic Burger Quantity</label>
+                            <input type="number" id="burger-qty" name="burger-qty" min="0" value="0" class="form-input">
+                        </div>
+                        
+                        <div class="form-field">
+                            <label for="fries-qty">Cosmic Fries Quantity</label>
+                            <input type="number" id="fries-qty" name="fries-qty" min="0" value="0" class="form-input">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="shake-qty">Meteor Shake Quantity</label>
+                            <input type="number" id="shake-qty" name="shake-qty" min="0" value="0" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-control-group">
+                        <h3>Add-ons & Options</h3>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <p>Burger Toppings (Checkboxes):</p>
+                            <div class="input-group">
+                                <label>
+                                    <input type="checkbox" name="topping" value="extra_sauce">
+                                    <span>Add Nebula Sauce</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="topping" value="double_cheese">
+                                    <span>Double Space Cheese</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p>Drink Size (Radio Buttons):</p>
+                            <div class="input-group">
+                                <label>
+                                    <input type="radio" name="drink_size" value="small" checked>
+                                    <span>Small (Standard)</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="drink_size" value="medium">
+                                    <span>Medium (+ $1.00)</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="drink_size" value="large">
+                                    <span>Large (For Thirsty Astronauts) (+ $2.50)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-control-group">
+                        <label for="special-requests" class="form-field">Special Requests (All Items)</label>
+                        <textarea 
+                            id="special-requests" 
+                            name="special-requests" 
+                            rows="7"
+                            cols="70"
+                            placeholder="E.g., No salt on fries, well-done burger, etc."
+                            class="form-input"
+                        ></textarea>
+                    </div>
+                    <div class="submit-div">
+                        <input 
+                            type="submit" 
+                            value="Go To Checkout" 
+                            class="submit-btn"
+                        >
+                    </div>
+                </form>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>
+                Made with love by <a href="#">CreyPoer</a>
+            </p>
+        </footer>
+        
+    </div>
+
+</body>
+</html>
